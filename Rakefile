@@ -4,6 +4,11 @@ require 'aws-sdk'
 def readit(thing)
   ::File.read(::File.join(::File.dirname(::File.join(__FILE__)), thing)).strip
 end
+namespace :supermarket do
+  task :publish do
+    system "knife cookbook site share #{readit 'NAME'} -o ./"
+  end
+end
 namespace :repository do
   cookbook_path = ENV['RAKE_COOKBOOK_PATH']
   cookbook_name = readit 'NAME'
