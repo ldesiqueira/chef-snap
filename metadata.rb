@@ -9,3 +9,6 @@ version ::File.read(::File.join(::File.dirname(::File.join(__FILE__)), 'VERSION'
 depends 'poise'
 depends 'packagecloud'
 depends 'golang'
+
+source_url 'https://github.com/ldesiqueira/chef-snap'
+issues_url 'https://github.com/ldesiqueira/chef-snap/issues/new'
