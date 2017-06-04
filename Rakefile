@@ -4,10 +4,11 @@ require 'aws-sdk'
 def readit(thing)
   ::File.read(::File.join(::File.dirname(::File.join(__FILE__)), thing)).strip
 end
-namespace :supermarket do |t, args|
-  cookbook_directory = args[:cookbook_directory] || ENV['SUPERMARKET_COOKBOOKS_BASE']
-  task :publish do
-    system "cd ~/brewcode/ && knife cookbook site share #{readit 'NAME'} Other"
+namespace :supermarket do
+  desc 'Publish cookbook to the global chef supermarket'
+  task :publish do |t, args|
+    cookbooks_directory = args[:cookbook_directory] || ENV['SUPERMARKET_COOKBOOKS_BASE']
+    system "cd #{cookbooks_directory} && knife cookbook site share #{readit 'NAME'} Other"
   end
 end
 namespace :repository do

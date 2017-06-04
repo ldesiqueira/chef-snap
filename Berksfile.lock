@@ -7,7 +7,7 @@ GRAPH
   golang (1.7.0)
   packagecloud (0.3.0)
   poise (2.8.1)
-  snap (0.0.1)
+  snap (0.0.3)
     golang (>= 0.0.0)
     packagecloud (>= 0.0.0)
     poise (>= 0.0.0)
