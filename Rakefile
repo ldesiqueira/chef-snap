@@ -6,7 +6,7 @@ def readit(thing)
 end
 namespace :supermarket do
   task :publish do
-    system "knife cookbook site share #{readit 'NAME'} -o ./"
+    system "cd ~/brewcode/ && knife cookbook site share #{readit 'NAME'} Other"
   end
 end
 namespace :repository do
