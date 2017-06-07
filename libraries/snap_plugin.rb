@@ -2,13 +2,13 @@ require 'poise'
 require 'chef/resource'
 require 'chef/provider'
 
-module Snap
+module SnapPlugin
   class Resource < Chef::Resource
     include Poise
-    provides  :snap
+    provides  :snap_plugin
     actions   :install
-    property :name, name_attribute: true, kind_of: String
-    property :release
+    property :home, name_attribute: true
+    property :install_method, default: :package, kind_of: Symbol
   end
   class Provider < Chef::Provider
     include Poise
@@ -20,6 +20,14 @@ module Snap
           type 'rpm'
         end
         package 'snap-telemetry'
+      end
+    end
+    def action_remove
+      case new_resource.install_method
+      when :package
+        package 'snap-telemetry' do
+          action :remove
+        end
       end
     end
   end
