@@ -1,3 +1,7 @@
+include_recipe 'golang'
+directory node['snap']['go']['source']['directory'] do
+  recursive true
+end
 include_recipe 'jobvite_snap::common'
 git ::File.join node['snap']['go']['source']['directory'], 'snap' do
   repository "#{node['snap']['repo']}snap.git"
